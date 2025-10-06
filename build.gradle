@@ -3,9 +3,8 @@ plugins {
     id 'io.qameta.allure' version '2.12.0'
 }
 
-group = 'ru.best_bumer'
-version = '1.0-SNAPSHOT'
-
+group 'qa.guru'
+version '1.0-SNAPSHOT'
 
 allure {
     report {
@@ -27,9 +26,22 @@ repositories {
 
 dependencies {
     testImplementation(
+            'org.junit.jupiter:junit-jupiter:5.9.0',
+            'com.codeborne:selenide:7.7.3',
+            'io.qameta.allure:allure-selenide:2.19.0',
+            'org.aspectj:aspectjweaver:1.9.23'
+    )
+}
+
+test {
+    useJUnitPlatform()
+    systemProperties(System.getProperties())
+}
+dependencies {
+    testImplementation(
             'org.junit.jupiter:junit-jupiter-api:5.9.0',
-            'com.codeborne:selenide:7.9.4',
-            'io.qameta.allure:allure-selenide:2.29.1'
+            'com.codeborne:selenide:6.7.2',
+            'io.qameta.allure:allure-selenide:2.19.0'
     )
 
     testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
